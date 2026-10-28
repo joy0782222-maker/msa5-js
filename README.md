@@ -12,6 +12,9 @@
 | [`13_exception.js`](./edu/13_exception.js) | 예외처리 | `try` · `catch` · `finally` · `throw` · `instanceof` |
 | [`14_destructuring.js`](./edu/14_destructuring.js) | 구조분해 문법 | 배열/객체 구조분해 · 이름 바꾸기 · 기본값 |
 | [`17_timer.js`](./edu/17_timer.js) | 타이머 함수 & 비동기 | `setTimeout` · `setInterval` · `clear~` |
+| [`18_ajax`](./edu/18_ajax.html) | AJAX 시작 | `axios` · `form` · `e.preventDefault()` · `e.target` |
+| [`19_promise.js`](./edu/19_promise.js) | Promise | 콜백 지옥 · `resolve` / `reject` · `.then` · `.catch` · `.finally` |
+| [`20_async_await.js`](./edu/20_async_await.js) | async / await | `async` · `await` · `try` / `catch` |
 
 <br>
 
@@ -48,12 +51,56 @@ console.log("C");
 // 결과: A → C → B
 ```
 
+**Promise**
+> "결과는 나중에 알려줄게"라는 약속. 성공하면 `resolve`, 실패하면 `reject`.
+> 콜백 안에 콜백이 계속 파고드는 **콜백 지옥**을 피하려고 생겼다.
+
+**async / await**
+> `async`는 **함수 앞**, `await`는 **기다릴 것 앞**.
+> `await`는 **자기 함수만** 멈추고, 바깥 코드는 계속 진행한다.
+
+**받는 방법은 두 가지 — 섞지 않기!**
+
+| 방식 ① Promise 체이닝 | 방식 ② async / await |
+|---|---|
+| `.then` 으로 성공 받기 | `await` 로 기다리기 |
+| `.catch` 로 실패 받기 | `try { } catch { }` 로 실패 받기 |
+| 점(`.`)으로 줄줄이 이어 붙임 | 중괄호 블록, 위에서 아래로 읽힘 |
+
+```js
+// 방식 ①
+timer("a")
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error.message))
+  .finally(() => console.log("끝"));   // finally는 항상 실행
+
+// 방식 ②
+const run = async () => {
+  try {
+    const result = await timer("a");
+    console.log(result);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+```
+
+**`catch` vs `.catch`**
+> `try`의 `catch`는 **문법(키워드)**, `.catch`는 Promise가 가진 **함수**.
+> 하는 일(에러 처리)은 같지만, 점(`.`)이 붙으면 Promise 쪽이다.
+> try-catch만으로는 나중에 터지는 비동기 에러를 못 잡는다 → `.catch` 또는 `await` + try-catch 사용.
+
+**AJAX**
+> 페이지 새로고침 없이 서버에서 데이터만 받아오는 것.
+> 폼 전송 시 `e.preventDefault()`로 새로고침을 막고, `e.target.이름.value`로 입력값을 꺼낸다.
+
 <br>
 
 ## 🗓️ 다음에 배울 것
 
-- [ ] Promise
-- [ ] async / await
+- [x] Promise
+- [x] async / await
+- [ ] AJAX — axios로 서버에 요청 보내고 카드 채우기
 
 <br>
 
