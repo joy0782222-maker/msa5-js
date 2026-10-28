@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX</title>
+    <link rel="stylesheet" href="/edu/reset.css" />
+    <link rel="stylesheet" href="/edu/18_ajax.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.20.0/dist/axios.min.js"></script>
+    <script src="/edu/18_ajax.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <form action="" method="">
+        <input
+          type="number"
+          name="page"
+          id="page"
+          placeholder="페이지"
+          required
+        />
+        <input
+          type="number"
+          name="limit"
+          id="limit"
+          placeholder="출력개수"
+          required
+        />
+        <button type="submit">전송</button>
+      </form>
+
+      <div class="card-container">
+        <div class="card">
+          <div class="card-img"></div>
+          <p class="card-text">1:aaaa</p>
+        </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <p class="card-text">2:bbbb</p>
+        </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <p class="card-text">3:cccc</p>
+        </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <p class="card-text">4:dddd</p>
+        </div>
+        <div class="card">
+          <div class="card-img"></div>
+          <p class="card-text">5:eeee</p>
+        </div>
+
+      </div><!-- card-container -->
+    </div><!-- container -->
+  </body>
+</html>
