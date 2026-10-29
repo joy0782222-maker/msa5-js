@@ -42,6 +42,6 @@ next.addEventListener("click", async (e) => {
 
 clean.addEventListener("click", () => {
   const cardContainer = document.querySelector(".card-con");
-  cardContainer.innerHTML = "";
+  cardContainer.textContent = "";
   page = 1;
 });
