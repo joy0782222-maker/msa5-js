@@ -101,9 +101,3 @@ const run = async () => {
 - [x] Promise
 - [x] async / await
 - [ ] AJAX — axios로 서버에 요청 보내고 카드 채우기
-
-<br>
-
----
-
-<sub>💬 코드 속 "창조 에러"는 오타가 아니라 추억입니다. (참조 에러예요)</sub>
