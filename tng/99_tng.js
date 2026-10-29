@@ -1,9 +1,3 @@
-// const button = document.querySelector("button");
-
-// button.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-// });
-
 const next = document.querySelector(".next");
 const clean = document.querySelector(".clean");
 let page = 1;
@@ -49,4 +43,5 @@ next.addEventListener("click", async (e) => {
 clean.addEventListener("click", () => {
   const cardContainer = document.querySelector(".card-con");
   cardContainer.innerHTML = "";
+  page = 1;
 });
