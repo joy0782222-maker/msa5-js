@@ -1,8 +1,8 @@
-const button = document.querySelector("button");
+// const button = document.querySelector("button");
 
-button.addEventListener("submit", async (e) => {
-  e.preventDefault();
-});
+// button.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+// });
 
 const next = document.querySelector(".next");
 const clean = document.querySelector(".clean");
