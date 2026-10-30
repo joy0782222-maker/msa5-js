@@ -18,6 +18,15 @@
 
 <br>
 
+## 🏋️ 실습
+
+| 파일 | 내용 | 핵심 키워드 |
+|---|---|---|
+| [`99_tng`](./tng/99_tng.js) | picsum 사진 3개씩 불러오기 | `axios` · `async/await` · `page` / `limit` · DOM 생성 |
+| [`999_tng`](./tng/999_tng.js) | 99번 업그레이드 — 중복 클릭 막기 | 즉시 실행 함수 · 디바운싱 플래그 · `params` · 단축 프로퍼티 |
+
+<br>
+
 ## 🔄 이벤트 루프
 
 ![이벤트 루프](./캡처.PNG)
@@ -94,10 +103,35 @@ const run = async () => {
 > 페이지 새로고침 없이 서버에서 데이터만 받아오는 것.
 > 폼 전송 시 `e.preventDefault()`로 새로고침을 막고, `e.target.이름.value`로 입력값을 꺼낸다.
 
+**AJAX 실습 (999번)**
+> 버튼 연타하면 요청이 여러 번 날아간다 → **플래그(`allowFlg`)로 처리 중엔 막기!**
+> 시작할 때 `false`, 끝나면 `finally`에서 다시 `true`. 에러가 나도 잠금이 풀린다.
+
+```js
+let allowFlg = true;
+
+btnNext.addEventListener("click", async () => {
+  if (!allowFlg) return;     // 처리 중이면 무시
+  allowFlg = false;
+  try {
+    const res = await axios.get(baseURL, { params: { page, limit } });
+    // 카드 만들기...
+    page++;
+  } finally {
+    allowFlg = true;         // 성공하든 실패하든 잠금 해제
+  }
+});
+```
+
+> `params`에 객체로 넘기면 axios가 `?page=1&limit=3`을 알아서 붙여준다.
+> `{ page: page, limit: limit }` → `{ page, limit }` 처럼 **변수명 = 키 이름이면 줄여 쓰기** 가능.
+> `(() => { ... })()` **즉시 실행 함수**로 감싸면 변수가 바깥으로 안 새어나간다.
+
 <br>
 
 ## 🗓️ 다음에 배울 것
 
 - [x] Promise
 - [x] async / await
-- [ ] AJAX — axios로 서버에 요청 보내고 카드 채우기
+- [x] AJAX — axios로 서버에 요청 보내고 카드 채우기
+- [ ] Vue — Vite로 프로젝트 만들기, 컴포넌트
